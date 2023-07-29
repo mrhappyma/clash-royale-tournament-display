@@ -17,11 +17,12 @@ export const tournamentRouter = createTRPCRouter({
       );
       if (tournamentInfoRequest.status != 200)
         return "error fetching tournament info";
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       const tournamentInfoJson = await tournamentInfoRequest.json();
       const tournamentInfo = tournamentSchema.parse(tournamentInfoJson);
 
       let battles: z.infer<typeof battleSchema>[] = [];
-      for (let member of tournamentInfo.membersList) {
+      for (const member of tournamentInfo.membersList) {
         const battleLogRequest = await fetch(
           `https://api.clashroyale.com/v1/players/%23${
             member.tag.split("#")[1]
@@ -29,9 +30,12 @@ export const tournamentRouter = createTRPCRouter({
           { headers }
         );
         if (battleLogRequest.status != 200) continue;
+        // its safe i promise
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         const battleLogJson = await battleLogRequest.json();
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
         const battleLog: z.infer<typeof battleSchema>[] = battleLogJson.map(
-          (battle: any) => battleSchema.parse(battle)
+          (battle: unknown) => battleSchema.parse(battle)
         );
         battleLog.forEach((battle) => {
           if (

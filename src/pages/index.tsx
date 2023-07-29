@@ -61,7 +61,7 @@ const Home: NextPage = () => {
 };
 export default Home;
 
-export const getServerSideProps = async (
+export const getServerSideProps = (
   context: GetServerSidePropsContext<ParsedUrlQuery, PreviewData>
 ) => {
   const code = context.query.c as string | undefined;

@@ -1,6 +1,6 @@
 import ProgressBar from "@ramonak/react-progress-bar";
-import { z } from "zod";
-import { tournamentSchema } from "~/utils/royale-api-types";
+import type { z } from "zod";
+import type { tournamentSchema } from "~/utils/royale-api-types";
 import { DateTime } from "luxon";
 import { useEffect, useState } from "react";
 
