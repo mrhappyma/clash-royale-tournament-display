@@ -18,7 +18,7 @@ export const tournamentSchema = z.object({
   status: z.string(),
   creatorTag: z.string(),
   name: z.string(),
-  description: z.string(),
+  description: z.string().optional(),
   levelCap: z.number(),
   firstPlaceCardPrize: z.number(),
   capacity: z.number(),
