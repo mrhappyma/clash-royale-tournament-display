@@ -39,12 +39,12 @@ const Home: NextPage = () => {
                 <TournamentHeader {...data.tournamentInfo} />
               </div>
               <div className="flex w-screen flex-row justify-around space-x-3 scroll-auto p-2">
-                <div className="shrink space-y-2">
+                <div className="w-1/3 space-y-2">
                   {data.tournamentInfo.membersList.map((member) => {
                     return <LeaderboardCard {...member} key={member.tag} />;
                   })}
                 </div>
-                <div className="space-y-2">
+                <div className="2-2/3 space-y-2">
                   {data.battles.map((battle, index) => {
                     return <BattleCard {...battle} key={index} />;
                   })}

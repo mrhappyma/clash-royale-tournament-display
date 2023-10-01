@@ -17,7 +17,7 @@ const TournamentHeader: React.FC<z.infer<typeof tournamentSchema>> = (
   }, []);
 
   return (
-    <div className="rounded-md bg-yellow-500 p-2">
+    <div className="p-22 w-full rounded-md bg-yellow-500">
       <div className="text-center text-2xl font-bold">{props.name}</div>
       <div className="text-center text-xl">{props.description}</div>
       {props.status == "inProgress" && (

@@ -15,8 +15,11 @@ export const tournamentRouter = createTRPCRouter({
         `https://api.clashroyale.com/v1/tournaments/%23${input.tag}`,
         { headers }
       );
-      if (tournamentInfoRequest.status != 200)
-        return "error fetching tournament info";
+      if (tournamentInfoRequest.status != 200) {
+        return (
+          "error fetching tournament info: " + tournamentInfoRequest.statusText
+        );
+      }
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       const tournamentInfoJson = await tournamentInfoRequest.json();
       const tournamentInfo = tournamentSchema.parse(tournamentInfoJson);
